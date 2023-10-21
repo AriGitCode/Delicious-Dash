@@ -9,6 +9,14 @@ const mongoose = require("mongoose");
 //     useUnifiedTopology: true,
 // });
 
+const ejsLayouts = require("ejs")
+
+
+//Connecting ejs template to app
+app.set('view engine', 'ejs')
+app.use(ejsLayouts)
+const indexRouter = require("../routes/index")
+app.use("/", indexRouter)
 // our modles
 // const { Restaurant } = require('./restaurants');
 
@@ -21,3 +29,4 @@ const PORT = 3000;
 app.listen(PORT,()=>{
     console.log(`app is listining to ${PORT}`)
 });
+

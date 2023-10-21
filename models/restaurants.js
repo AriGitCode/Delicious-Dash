@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 
 const restaurantSchema = mongoose.Schema({
@@ -11,3 +10,4 @@ const restaurantSchema = mongoose.Schema({
   const Restaurant = mongoose.model("Restaurant",restaurantSchema,"restaurants");
 
   module.exports = {Restaurant};
+
