@@ -1,9 +1,6 @@
-// NODE_ENV=development
-// PASSWORD=12345
-// DATABASE_LOCAL=mongodb://...............
-// JWT_SECRET=my-secret-is-here-for-userauthenticaion-dont
-// JWT_EXPIRES_IN=90d
-// JWT_COOKIE_EXPIRES_IN=90
+const env = require("dotenv").config();
+const DATABASE_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.6xvvg5e.mongodb.net/?retryWrites=true&w=majority`;
+console.log(process.env);
+const PORT = process.env.PORT || 8080;
 
-// Email_username=wissam@gmail.com
-// Email_password=..........
+module.exports = { DATABASE_URL, PORT };

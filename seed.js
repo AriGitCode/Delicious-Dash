@@ -3,10 +3,11 @@ const { faker } = require('@faker-js/faker');
 // make connection to our mongodb client so when run seed.js it need to make connection to db to read the data to db
 const MongoClient = require("mongodb").MongoClient;
 const _ = require("lodash");
+const { DATABASE_URL } = require('./config');
 
 // declaring main function to host all logic that will create the fake data
 async function main() {
-    const uri = `mongodb+srv://wissam:richy1234@cluster0.6xvvg5e.mongodb.net/?retryWrites=true&w=majority`;
+    const uri = DATABASE_URL;
     const client = new MongoClient(uri);
 
     try {

@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");// to parse the request and create req.body
 const PORT =3000;
 const db = require('./db/connection');
+const env = require("dotenv").config({path: './.env'});
 
 const app = express();
 
@@ -12,14 +13,15 @@ const userRouter = require('./routes/userRouter');
 
 
 
-
+// function to calculate total price
+// used .reduce to get the sum of the item
 const calculateOrderAmount = (orderItems) => {
     const initialValue = 0;
     const itemsPrice = orderItems.reduce(
         (previousValue, currentValue) =>
         previousValue + currentValue.price * currentValue.amount, initialValue
     );
-    return itemsPrice * 100;
+    return itemsPrice * 100; // strip accepts smallest currency like cents
 }
 
 app.use(bodyParser.json());
@@ -95,9 +97,10 @@ app.listen(PORT, () => {
 app.use('/api/', productRouter);
 app.use('/api/', userRouter);
 
+// to post the payment
 app.post('/create-payment-intent', async(req, res) => {
     try {
-        const { orderItems, shippingAddress, userId } = req.body;
+        const { orderItems, shippingAddress, userId } = req.body; // user id to be set when creat auth file
         console.log(shippingAddress);
 
         const totalPrice = calculateOrderAmount(orderItems);
