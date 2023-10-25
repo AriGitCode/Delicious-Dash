@@ -7,7 +7,7 @@ const { DATABASE_URL } = require('./config');
 
 // declaring main function to host all logic that will create the fake data
 async function main() {
-    const uri = DATABASE_URL;
+    const uri = `mongodb+srv://wissam:richy1234@cluster0.6xvvg5e.mongodb.net/?retryWrites=true&w=majority`;
     const client = new MongoClient(uri);
 
     try {

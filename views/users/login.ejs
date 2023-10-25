@@ -1,0 +1,24 @@
+//A.T. modified
+<%- include('../partials/header.ejs') %>
+
+<h1>LOGIN</h1>
+
+<form class="login" method="POST" action="/users/login">
+    <fieldset>
+        <label for="email" >e-mail</label>
+        <input id="email" type="email" name="email">
+    </fieldset>
+
+    <fieldset>
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password">
+    </fieldset>
+
+    <input type="submit" value="Submit">
+
+    or <a href="newuser.ejs">Sign Up</a> <%/* ???change if not work to user/newuser.ejs*/%>
+    
+    
+</form>
+
+<%- include('../partials/footer.ejs') %>

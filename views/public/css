@@ -1,0 +1,48 @@
+/* A.T.*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Navigation bar styles */
+nav {
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Logo styles */
+.logo {
+    font-family: 'Mouse Memoirs', cursive;
+    font-size: 28px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Navigation list styles */
+ul {
+    list-style: none;
+}
+
+/* Navigation item styles */
+li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+/* Navigation link styles */
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+/* Change link color on hover */
+a:hover {
+    color: #ff9900;
+}

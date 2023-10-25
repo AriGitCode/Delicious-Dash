@@ -1,0 +1,9 @@
+{"__comment__": "A.T added nodemon.json with JWT & it needs secret word ",
+    "env": {
+        "DB_USER": "",
+        "DB_PASWORD": "",
+        "JWT_KEY_SECRET": ""   
+    }
+
+    
+}
