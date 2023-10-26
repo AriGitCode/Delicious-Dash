@@ -33,11 +33,14 @@ const {    //A.T
 
 
 //NEW renders new user regist-n form by sendNewUserForm function from authController.
-router.get('/users/login', sendLoginForm);
+router.get('/login', sendLoginForm);
 router.get("/new", sendNewUserForm);
 
 //CREATE user registration and account creation
 router.post("/signup", createNewUser);
+
+// add mw for checkauth
+// router.use(checkauth);
 
 //LOGIN - GET user login form 
 router.get("/login", sendLoginForm);

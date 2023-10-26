@@ -12,8 +12,11 @@ const app = express();
 const productRouter = require('./routes/productRouter');
 const userRouter = require('./routes/userRouter');
 
-app.set('view engine', 'ejs');
+
 app.set('views',path.join(__dirname, 'views'))
+app.set('view engine', 'ejs');
+
+app.use('/users', userRouter);
 
 // function to calculate total price
 // used .reduce to get the sum of the item

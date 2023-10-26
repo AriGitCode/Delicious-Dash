@@ -77,12 +77,12 @@ const createNewUser = (req, res, next) => {
 //LOGIN - GET
 const sendLoginForm = (req, res, next) => {
 
-  let isLoggedIn = false
+//   let isLoggedIn = false
 
-  if(req.cookies.access_token) {
-      isLoggedIn = true
-  } 
-  res.render('users/login.ejs', {isLoggedIn})
+//   if(req.cookies.access_token) {
+//       isLoggedIn = true
+//   } 
+  res.render('users/login.ejs', {})
 
 }
 
