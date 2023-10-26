@@ -4,14 +4,16 @@ const bodyParser = require("body-parser");// to parse the request and create req
 const PORT =3000;
 const db = require('./db/connection');
 const env = require("dotenv").config({path: './.env'});
+const ejs = require('ejs');
+const path = require('path');
 
 const app = express();
 
 const productRouter = require('./routes/productRouter');
 const userRouter = require('./routes/userRouter');
 
-
-
+app.set('view engine', 'ejs');
+app.set('views',path.join(__dirname, 'views'))
 
 // function to calculate total price
 // used .reduce to get the sum of the item
