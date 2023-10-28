@@ -1,7 +1,10 @@
-//A.T. modified
+
 <%- include('../partials/header.ejs') %>
 
-<h1>LOGIN</h1>
+<h1>A Neighborhood of Good</h1>
+
+<p> At Delicious Dash, we celebrate the people behind every order. Our mission is to empower and grow local economies. When consumers get their goods, local merchants get business, and Dashers get paid.</p>
+
 
 <form class="login" method="POST" action="/users/login">
     <fieldset>
@@ -16,7 +19,7 @@
 
     <input type="submit" value="Submit">
 
-    or <a href="newuser.ejs">Sign Up</a> <%/* ???change if not work to user/newuser.ejs*/%>
+    or <a href="/users/new">Sign Up</a> <%/* ???change if not work to user/newuser.ejs*/%>
     
     
 </form>

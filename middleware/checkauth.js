@@ -1,6 +1,6 @@
 //A.T.
 const jwt = require('jsonwebtoken')//require the jsonwebtoken library to work with JWTs 
-const { DATABASE_URL, PORT, JWT_KEY_SECRET } = require('../config')
+const { JWT_KEY_SECRET } = require('../config')
 //import config values: DATABASE_URL, PORT, JWT_KEY_SECRET from a config file
 
 //middleware

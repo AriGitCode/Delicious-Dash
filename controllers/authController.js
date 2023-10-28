@@ -1,19 +1,20 @@
-//!!! npm i bcryptjs cookie-parser jsonwebtoken
-const express = require('express');
-const router = express.Router();
+//!!! npm i  bcrypt  bcryptjs  cookie-parser  jsonwebtoken
+// const express = require('express');
+// const router = express.Router();// A.T. do we need this????
 
 const mongoose = require('mongoose');
-//const methodOverride = require('method-override');//for HTTP method overriding
-const cookieParser = require('cookie-parser');//for handling cookies
 
-//authentication /libraries
+//const methodOverride = require('method-override');//for HTTP method overriding
+//const cookieParser = require('cookie-parser');//for handling cookies //A.T. do we need this????
+
+//authentication related libraries
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 //Instead of using mongoose's promise-like system, we'll be using Javascript's promise system: 
 mongoose.Promise = global.Promise
 
-const { DATABASE_URL, PORT, JWT_KEY_SECRET } = require('../config') //JWT is a secret word that only exists on server, Nobody allowed to know.
+const { JWT_KEY_SECRET } = require('../config') //JWT is a secret word that only exists on server, Nobody allowed to know otherwise they can replicate JWT
 const User = require('../models/userModel');
 
 

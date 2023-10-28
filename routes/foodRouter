@@ -1,0 +1,54 @@
+// //A.T. 28.10 
+// const express = require("express");
+// const router = express.Router();
+
+// const mongoose = require("mongoose");
+
+
+// //Instead of using mongoose's promise-like system, we'll be using Javascript's promise system:
+// mongoose.Promise = global.Promise;
+
+
+// const { checkauth } = require("../middleware/checkauth"); //check authentication middleware function
+
+// const {
+//   getAllFoods,
+//   sendNewFoodForm,
+//   getFoodById,
+//   //getStoriesByUserId,
+//   //createNewFood,
+//   sendEditFoodForm,
+//   updateFoodById,
+//   deleteFoodById, //?
+// } = require("../controllers/foodController");
+// // const { application } = require("express");
+
+// //==============ROUTES============================
+
+// //INDEX --------------------->
+// router.get("/", getAllFoods);
+
+// //NEW ---------------------->
+// router.get("/new", checkauth, sendNewFoodForm);
+
+// //SHOW   ----------------->
+// router.get("/:id", getFoodById);
+
+// //shows user's stories
+// //router.get("/user/:id", getStoriesByUserId);
+
+// router.use(checkauth); //MIDDLEWARE <--------------------------------🔏
+
+// //CREATE - AUTHENTICATION  -------------------> READY
+// //router.post("/", createNewFood);
+
+// //EDIT - AUTHENTICATION
+// router.get("/:id/edit", sendEditFoodForm);
+
+// //UPDATE - AUTHENTICATION
+// router.put("/:id", updateFoodById);
+
+// //DELETE - AUTHENTICATION
+// router.delete("/:id", deleteFoodById);
+
+// module.exports = router;
