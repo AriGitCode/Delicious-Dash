@@ -8,7 +8,7 @@ const db = require('./db/connection');
 // const ejs = require('ejs');
 // const path = require('path');
 
-const PORT = 3000;
+const PORT = 4000;
 
 
 // const productRouter = require('./routes/productRouter');
@@ -43,7 +43,7 @@ app.use('/dishes',(req,res)=>{
 app.use('/users', userRouter);
 
 
-app.use('/dishes', productRouter);
+//app.use('/dishes', productRouter);
 
 
 

@@ -1,15 +1,40 @@
 // //A.T. 28.10 
-// const express = require("express");
-// const router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
+
+//Instead of using mongoose's promise-like system, we'll be using Javascript's promise system:
+//mongoose.Promise = global.Promise;
 
 
-// //Instead of using mongoose's promise-like system, we'll be using Javascript's promise system:
-// mongoose.Promise = global.Promise;
+app.get('/MenuItem/:id', (req, res) => {
+    const foodId = parseInt(req.params.id);
+    const foodItem = MenuItem.find(item => item.id === foodId);
+    if (!foodItem) {
+      // Food item not found
+      res.status(404).send('Food item not found');
+    } else {
+      // Render the details page for the food item using EJS
+      res.render('dishes', { foodItem });
+    }
+  });
+New
 
+//main page
+router.get("/", getAllFoods);
+//NEW
+router.get("/new", checkauth, sendNewFoodForm);
+ //SHOW
+// router.get("/:id", getFoodById);
+// //CREATE
+router.post("/", createNewFood);
+//UPDATE
+router.put("/:id", updateFoodById);
+//DELETE
+router.delete("/:id", deleteFoodById);
+module.exports = router;
 
-// const { checkauth } = require("../middleware/checkauth"); //check authentication middleware function
 
 // const {
 //   getAllFoods,
@@ -25,7 +50,7 @@
 
 // //==============ROUTES============================
 
-// //INDEX --------------------->
+// 
 // router.get("/", getAllFoods);
 
 // //NEW ---------------------->

@@ -1,27 +1,27 @@
 
-<%- include('../partials/header.ejs') %>
+<!--<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" type="text/css" href="/login.css">
+<div class="bg-image"></div>
 
-<h1>A Neighborhood of Good</h1>
+<div class="bg-white login-form-container">
+    <form class="login-form" method="POST" action="/users/login">
+        <h1>Login</h1>
+        <fieldset>
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email">
+        </fieldset>
 
-<p> At Delicious Dash, we celebrate the people behind every order. Our mission is to empower and grow local economies. When consumers get their goods, local merchants get business, and Dashers get paid.</p>
+        <fieldset>
+            <label for="password">Password</label>
+            <input id="password" type="password" name "password">
+        </fieldset>
+
+        <input type="submit" value="Submit">
+
+        <p>or <a href="/users/new">Sign Up</a></p>
+    </form>
+</div>
 
 
-<form class="login" method="POST" action="/users/login">
-    <fieldset>
-        <label for="email" >e-mail</label>
-        <input id="email" type="email" name="email">
-    </fieldset>
 
-    <fieldset>
-        <label for="password">Password</label>
-        <input id="password" type="password" name="password">
-    </fieldset>
-
-    <input type="submit" value="Submit">
-
-    or <a href="/users/new">Sign Up</a> <%/* ???change if not work to user/newuser.ejs*/%>
-    
-    
-</form>
-
-<%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>-->
