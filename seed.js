@@ -1,53 +1,33 @@
-// import faker.js 
-const { faker } = require('@faker-js/faker');
-// make connection to our mongodb client so when run seed.js it need to make connection to db to read the data to db
-const MongoClient = require("mongodb").MongoClient;
-const _ = require("lodash");
-const { DATABASE_URL } = require('./config');
+const db = require('./db');
+const MenuItem = require('./menuModel');
 
-// declaring main function to host all logic that will create the fake data
-async function main() {
-    const uri = DATABASE_URL;
-    const client = new MongoClient(uri);
 
-    try {
-        await client.connect();
 
-        const productsCollection = client.db("food-delivery-app").collection("products");
-        const categoriesCollection = client.db("food-delivery-app").collection("categories");
+// async function populateDatabase() {
+//     try {
+//         await db.connect();
+//         const menuItems = [
+//             {
+//                 name: 'Burger',
+//                 description: 'Delicious burger with all the fixings',
+//                 price: 10.99,
+//                 category: 'Main Course',
+//             },
+//             {
+//                 name: 'Caesar Salad',
+//                 description: 'Fresh salad with Caesar dressing',
+//                 price: 7.99,
+//                 category: 'Appetizer',
+//             },
+//             // Add more menu items here
+//         ];
+//         await MenuItem.insertMany(menuItems);
+//         console.log('Menu items inserted into the database');
+//     } catch (error) {
+//         console.error('Error populating the database:', error);
+//     } finally {
+//         db.close();
+//     }
+// }
+// populateDatabase();
 
-        // creating our categories
-
-        let categories = ['breakfast', 'lunch', 'dinner', 'drinks'].map((category) => { return { name: category } });
-        await categoriesCollection.insertMany(categories);
-
-        let imageUrls = [
-            'https://images.pexels.com/photos/15913452/pexels-photo-15913452/free-photo-of-poke-bowl-with-salmon.jpeg?auto=compress&cs=tinysrgb&w=1600',
-
-            // need to insert images path here
-        ]
-// for products we will use faker to send info
-// faker.commerce is ready fake schema pulled from fakerjs.dev website
-// for categories and to be randomly picked, i am using lodash lib 
-// _.sample is built in belong lodash lib to pick random category and image
-        let products = [];
-        for (let i = 0; i < 10; i+=1) {
-            let newProduct = {
-                name: faker.commerce.productName(),
-                adjective: faker.commerce.productAdjective(),
-                desciption: faker.commerce.productDescription(),
-                price: faker.commerce.price(),
-                category: _.sample(categories),
-                imageUrl: _.sample(imageUrls)
-            };
-            products.push(newProduct);
-        }
-        await productsCollection.insertMany(products);
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
-}
-
-main();

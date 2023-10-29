@@ -1,0 +1,9 @@
+{"__comment__": "",
+    "env": {
+        "DB_USER": "ari",
+        "DB_PASWORD": "project129",
+        "JWT_KEY_SECRET": "whatever"   
+    }
+
+    
+}
