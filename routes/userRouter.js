@@ -8,7 +8,7 @@ const {    //A.T importing code for fetching user
     createNewUser,
     sendLoginForm,
     login,
-    logout,
+   
   } = require("../controllers/authController");
 
 // router.post('/create-user', (req, res) => {
@@ -30,7 +30,9 @@ const {    //A.T importing code for fetching user
 
 //from here A.T modified code
 //GET - all users
-//router.get("/", getUser);
+router.get("/", (req, res) => {
+  res.send("Hello from Get ALL USERS!");
+});
 
 //NEW renders new user regist-n form by sendNewUserForm function from authController.
 router.get("/new", sendNewUserForm); //this for sending the form (in ejs)
