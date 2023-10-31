@@ -3,7 +3,6 @@
 // const router = express.Router();// A.T. do we need this????
 
 
-//This is NEW REPO!!!
 const mongoose = require('mongoose');
 
 //const methodOverride = require('method-override');//for HTTP method overriding
@@ -32,95 +31,68 @@ const sendNewUserForm = (req, res, next) => {
   res.render('users/newuser.ejs', {isLoggedIn})
 
 }
-
-//CREATE   
-const createNewUser = (req, res, next) => {
-  console.log('Posting New User')
-
-  const requiredFields = ['firstName', 'lastName', 'email', 'password']
-
-  for(let i = 0; i < requiredFields.length; i++) {
-      const field = requiredFields[i]
-      if(!(field in req.body)) {
-          const errorMessage = `missing ${field} in request body`
-          console.error(errorMessage)
-          return res.send(errorMessage)
-      }
-  }
-
-  //normalizing email
-  req.body.email = req.body.email.toLowerCase()
-  console.log(req.body)
-
-  const { firstName, lastName, email, password } = req.body
-
-    //hashing the password with bcrypt
-    bcrypt.hash(password, 12) //anything higher than 20 would take days to encrypt and decrypt
-        .then(encryptedPw => {
-            console.log(`Finished encrypting password: ${encryptedPw}`)
-            const newUser = { firstName, lastName, email, password: encryptedPw }
-
-            User.create(newUser)
-                .then(usr => {
-                    const token = jwt.sign(
-                        { userId: usr.id, email: usr.email }, //payload
-                        JWT_KEY_SECRET, //server secret
-                        // { expiresIn: '1hr' }
-                    )
-                        // const response = { user: usr, token }
-                        // return res.send(response)
-
-                        return res.cookie('access_token', token).redirect('/users')
-                        
-                })
-        })
-
-}
-
-//LOGIN - GET
+// SEND LOGIN FORM
 const sendLoginForm = (req, res, next) => {
-
-//   let isLoggedIn = false
-
-//   if(req.cookies.access_token) {
-//       isLoggedIn = true
-//   } 
-  res.render('users/login.ejs', {})
-
-}
-
-//LOGIN - POST 
-const login = (req, res, next) => {
-  //normalize email:
-  req.body.email.toLowerCase()
-
-  //lets check if the user exists: 
-  User.findOne({ email: req.body.email })
-      .then((usr) => {
-          console.log(usr)
-          if(!usr){
-              return res.send('email not found')
-          } //end of email check
-
-          //now that the user exists, we'll check if the req.body.password matches the user's password: 
-          bcrypt.compare(req.body.password, usr.password) //bcrypt.compare is a method that returns TRUE or FALSE
-              .then((matched) => {
-                  if(matched === false){
-                      return res.send('invalid password, try again')
-                  } 
-                  const token = jwt.sign(
-                      { userId: usr.id, email: usr.email }, 
-                      JWT_KEY_SECRET, 
-                    //   { expiresIn: '1hr' }
-                  )
-
-                  return res.cookie('access_token', token)
-                      .redirect('/users')
-              })
-
-      })
-}
-
+    res.render('users/login.ejs', {});
+  };
+//CREATE   
+const createNewUser = async (req, res, next) => {
+    try {
+      const { firstName, lastName, email, password } = req.body;
+  
+      const userExists = await User.findOne({ email });
+      if (userExists) {
+        return res.status(400).send('Email already exists');
+      }
+  
+      const encryptedPw = await bcrypt.hash(password, 12);
+  
+      const newUser = { firstName, lastName, email, password: encryptedPw };
+  
+      const usr = await User.create(newUser);
+      const token = jwt.sign({ userId: usr.id, email: usr.email }, JWT_KEY_SECRET);
+  
+      return res.cookie('access_token', token).redirect('/menu');
+    } catch (error) {
+      console.error('Error creating user:', error);
+      return res.status(500).send('An error occurred while creating the user');
+    }
+  };
+  
+  const login = async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+  
+      console.log(`Email: ${email}, Password: ${password}`);
+  
+      const user = await User.findOne({ email });
+  
+      console.log(`User from database:`, user);
+  
+      if (!user) {
+        return res.status(400).send('Email not found');
+      }
+  
+      console.log('User Password:', user.password);
+  
+      const matched = await bcrypt.compare(password, user.password);
+  
+      console.log('Matched:', matched);
+  
+      if (!matched) {
+        return res.status(400).send('Invalid password, please try again');
+      }
+  
+      const token = jwt.sign({ userId: user.id, email: user.email }, JWT_KEY_SECRET);
+  
+      return res.cookie('access_token', token).redirect('/menu');
+    } catch (error) {
+      console.error('Login error:', error);
+      return res.status(500).send('An error occurred during login');
+    }
+  };
+  
+  
 //LOGOUT
 const logout = (req, res, next) => {
 console.log('is my logout working? or not?????? aaaaaah!')

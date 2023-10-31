@@ -1,0 +1,90 @@
+<%- include('./partials/header.ejs') %>
+
+<link rel="stylesheet" type="text/css" href="/stylemenu.css" >
+<body>
+    <h1>Popular items</h1>
+    <div class="menu-category">
+        <h2>Salads</h2>
+        <div class="menu-items">
+             <% for (let item of salads) { %>
+            <div class="menu-item">
+                <img src="<%= item.image %>" alt="<%= item.name %>" width="170" height="180">
+                <h3><%= item.name %>Chicken Caesar Salad</h3>
+                <p>Price: $<%= item.price %> 14.99</p>
+                <button>Add to Cart</button>
+        </div>
+        <% } %>
+    </div>
+    <div class="menu-items">
+        <% for (let item of salads) { %>
+        <div class="menu-item">
+            <img src="<%= item.image %>" alt="<%= item.name %>" width="170" height="180">
+            <h3><%= item.name %> Garden Salad</h3>
+            <p>Price: $9.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <% } %>
+    </div>
+</div>
+<div class="menu-category">
+    <h2>Pizzas</h2>
+    <div class="menu-items">
+        <% for (let item of pizzas) { %>
+        <div class="menu-item">
+            <img src="<%= item.image %>" alt="<%= item.name %>" width="170" height="180">
+            <h3><%= item.name %> Pepperoni Pizza</h3>
+            <p>Price: $14.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <% } %>
+    </div>
+    <div class="menu-items">
+        <% for (let item of pizzas) { %>
+        <div class="menu-item">
+            <img src="<%= item.image %>" alt="<%= item.name %>" width="170" height="180">
+            <h3><%= item.name %> Margherita Pizza</h3>
+            <p>Price: $13.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <% } %>
+    </div>
+</div>
+<div class="menu-category">
+    <h2>Pizzas</h2>
+    <div class="menu-items">
+        <% for (let item of pizzas) { %>
+        <div class="menu-item">
+            <img src="<%= item.image %>" alt="<%= item.name %>" width="170" height="180">
+            <h3><%= item.name %> Pepperoni Pizza</h3>
+            <p>Price: $14.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <% } %>
+    </div>
+    <div class="menu-items">
+        <% for (let item of pizzas) { %>
+        <div class="menu-item">
+            <img src="<%= item.image %>" alt="<%= item.name %>" width="170" height="180">
+            <h3><%= item.name %> Margherita Pizza</h3>
+            <p>Price: $13.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+</body>
+
+
+<%- include('./partials/footer.ejs') %>
+
+<!--<ul>
+        <% menuItems.forEach(function(item) { %>
+            <li>
+                <h2><%= item.name %></h2>
+                <p><%= item.description %></p>
+                <p>Price: $<%= item.price.toFixed(2) %></p>
+                <p>Category: <%= item.category %></p>
+            </li>
+        <% }); %>
+    </ul>-->
