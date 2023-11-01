@@ -3,12 +3,8 @@ const express = require("express");
 const router = express.Router();
 const menuController = require('../controllers/menuController')
 
-//Instead of using mongoose's promise-like system, we'll be using Javascript's promise system:
-//mongoose.Promise = global.Promise;
 
 router.get('/', menuController.getMenuItems);//A.T don't know if it's right method
-
-
 
 module.exports = router
 

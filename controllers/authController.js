@@ -85,33 +85,35 @@ const createNewUser = async (req, res, next) => {
   
       const token = jwt.sign({ userId: user.id, email: user.email }, JWT_KEY_SECRET);
   
-      return res.cookie('access_token', token).redirect('/menu');
+      return res.cookie('access_token', token).redirect('/customer-experience');
     } catch (error) {
       console.error('Login error:', error);
       return res.status(500).send('An error occurred during login');
     }
   };
-  
-  
-//LOGOUT
-const logout = (req, res, next) => {
-console.log('is my logout working? or not?????? aaaaaah!')
-const token = req.cookies.access_token
-console.log(token)
-if(!token) {
-    return res.send('Failed to logout')
-}
-const data = jwt.verify(token, JWT_KEY_SECRET)
-console.log(data)
-
-return res.clearCookie('access_token')
-    .redirect('/users/login')
-}
 
 module.exports = {
 sendNewUserForm, 
 createNewUser, 
 sendLoginForm,
 login, 
-logout
+//logout
 }
+  //Once the user is authenticated and their session gets saved, their user details are saved to req.user.
+    // console.log(req.user.id);
+  
+  
+// //LOGOUT
+// const logout = (req, res, next) => {
+// console.log('is my logout working? or not?????? aaaaaah!')
+// const token = req.cookies.access_token
+// console.log(token)
+// if(!token) {
+//     return res.send('Failed to logout')
+// }
+// const data = jwt.verify(token, JWT_KEY_SECRET)
+// console.log(data)
+
+// return res.clearCookie('access_token')
+//     .redirect('/users/login')
+// }

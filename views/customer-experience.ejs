@@ -1,0 +1,41 @@
+<%- include('./partials/header.ejs') %>
+
+<div class="main">
+    <div class="container">
+        <h1>Your Feedback Shapes Our Future</h1>
+        <p>At Delicious Dash, your satisfaction drives our mission. Share your thoughts, suggestions, and requests with us, guiding our continuous improvement.</p>
+        <h1>A Personal Touch</h1>
+        <p>As our loyal customer, your preferences and special requests are our top priority. Let us create a unique dining experience just for you.</p>
+        <h1>Join the Journey</h1>
+        <p>By sharing your feedback and preferences, you become a part of our culinary family. Together, we'll elevate your dining experience.</p>
+        <p>Thank you for choosing us. Your feedback is our inspiration.</p>
+        <p><strong>Bon Appétit!</strong></p>
+        
+        <form id="feedbackForm" action="/customer-experience" method="POST">
+            <textarea name="feedback" placeholder="Leave your feedback here"></textarea>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    
+        
+        <h2>Feedback:</h2>
+       
+  
+      <hr>
+      <a class="btnLog" href="/home" role="button">Log Out</a>
+      <a class="btnSubmit" href="/submit" role="button">Submit</a>
+    </div>
+  </div>
+
+
+<%- include('./partials/footer.ejs') %>
+
+
+
+
+
+
+
+
+
+
+ 

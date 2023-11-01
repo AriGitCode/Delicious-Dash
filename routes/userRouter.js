@@ -8,27 +8,8 @@ const {    //A.T importing code for fetching user
     createNewUser,
     sendLoginForm,
     login,
-   
   } = require("../controllers/authController");
 
-// router.post('/create-user', (req, res) => {
-//     const user = new User({
-//         name: req.body.name,
-//         email: req.body.email,
-//         _id: req.body._id,
-//     })
-
-//     user.save((err, user) => {
-//         if (err) {
-//             res.status(400).send({ error : err})
-//         } else {
-//             res.status(200).send({ data: user})
-//         }
-//     })
-// })
-
-
-//from here A.T modified code
 //GET - all users
 router.get("/", (req, res) => {
   res.send("Hello from Get ALL USERS!");
@@ -49,6 +30,10 @@ router.get("/login", sendLoginForm);
 //LOGIN - POST sends the login cred-s (email and password) securely to server for authentication.
 router.post("/login", login);
 
+//router.get('/customer-experience', userRouter)
+
+
+ 
 //LOGOUT
 //router.get("/logout", logout);
 
