@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
       email: { type: String, required: true, unique: true,},
       password: { type: String, required: true, minlength: 6 },
       orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
-      feedback: { type: String }, 
+      feedbacks: { type: Array }, //Array
     },
 
     {timestamps: true,}

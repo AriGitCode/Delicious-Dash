@@ -19,6 +19,8 @@ app.use( express.static('public'))
 //Import Routers
 const userRouter = require('./routes/userRouter');
 const menuRouter = require ('./routes/menuRouter');//A.T 30.10
+const feedbackRouter = require ('./routes/feedbackRouter');
+const checkauth = require('./middleware/checkauth.js');
 //const customerExpRouter = require('./routes/customerExpRouter.js')
 // app.set('views',path.join(__dirname, 'views'))
  app.set('view engine', 'ejs');
@@ -29,12 +31,13 @@ app.use(bodyParser.json({ limit: "200mb" })); //looks at any requests that comes
 app.use(express.urlencoded({ limit: "200mb", extended: false }));// added A.T.
 //app.use(methodOverride("_method"));// added A.T.
 app.use(cookieParser());// A.T. 
+app.use(checkauth);
 
 
 //use routers
 app.use('/users', userRouter);
 app.use('/menu', menuRouter);
-
+app.use('/feedback', feedbackRouter);
 
 
 

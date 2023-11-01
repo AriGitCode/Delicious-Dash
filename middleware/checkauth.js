@@ -6,6 +6,7 @@ const { DATABASE_URL, PORT, JWT_KEY_SECRET } = require('../config')
 //middleware
 const checkauth = (req, res, next) => {
     try {
+        console.log("test");
         const token = req.cookies.access_token //It attempts to retrieve the JWT token from the access_token cookie in the request.
 
         if(!token) { 
@@ -23,4 +24,4 @@ const checkauth = (req, res, next) => {
     }
 }
 
-module.exports = {checkauth}
+module.exports = checkauth
