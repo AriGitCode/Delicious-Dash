@@ -86,7 +86,7 @@ const createNewUser = async (req, res, next) => {
   
       const token = jwt.sign({ userId: user.id, email: user.email }, JWT_KEY_SECRET);
   
-      return res.cookie('access_token', token).redirect('/customer-experience');
+      return res.cookie('access_token', token).redirect('/feedbacks');
     } catch (error) {
       console.error('Login error:', error);
       return res.status(500).send('An error occurred during login');

@@ -37,7 +37,7 @@ app.use(checkauth);
 //use routers
 app.use('/users', userRouter);
 app.use('/menu', menuRouter);
-app.use('/feedback', feedbackRouter);
+app.use('/feedbacks', feedbackRouter);
 
 
 
