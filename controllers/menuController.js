@@ -12,9 +12,6 @@ const getMenuItems = async(req, res) => {
         const menuItems = await MenuItem.find();
         const salads = menuItems.filter(item => item.category === 'Salads');
         const pizzas = menuItems.filter(item => item.category === 'Pizzas');
-        console.log("menuItems", menuItems)
-        console.log("salads",salads)
-        console.log("pizza",pizzas)
         res.render('menu.ejs', { menuItems,salads, pizzas });
     } catch(err) {
             res.status(500).send('Error fetching menu items')

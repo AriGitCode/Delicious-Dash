@@ -9,9 +9,9 @@ router.post('/', async (req, res) => {
   try {
     const { feedback } = req.body;
     const userId = req.userId;
-    console.log(req.body);
-    console.log(req.userId);
-    // Create a new feedback entry in the database.
+    // console.log(req.body);
+    // console.log(req.userId);
+    
     const filter = {_id: req.userId};
    
     const user = await User.findOne(filter);
@@ -115,6 +115,15 @@ router.post('/:id/edit', async (req, res) => {
   }
 });
 
+
+
+module.exports = router
+
+
+
+
+
+
 //EDIT
 // router.post('/:id/edit',  async (req, res) => {
 //   try {
@@ -136,5 +145,3 @@ router.post('/:id/edit', async (req, res) => {
 //     res.status(500).send('Error deleting feedback');
 //   }
 // });
-
-module.exports = router

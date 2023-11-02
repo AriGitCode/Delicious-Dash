@@ -1,61 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f2f2f2;
+    font-family: 'Roboto', sans-serif;
+}
+.bg-image {
+    background-image: url('/images/specialfood30.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
-h1 {
-    color: #333;
+
+/* About section layout */
+.about-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.menu-category {
-    background-color: #fff;
+.about-text {
+    width: 50%; /* Adjust the width as needed */
     padding: 20px;
-    margin: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
 }
 
-.menu-items {
+.about-image {
+    width: 50%; /* Adjust the width as needed */
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    .about-section {
+        flex-direction: column;
+    }
+
+    .about-text,
+    .about-image {
+        width: 100%;
+    }
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+  /* Navigation bar styles */
+  nav {
+    background-color: #f97f28;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    z-index: 1; /* Ensure the navigation bar is above other elements */
+}
+
+.logo {
+    
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+
+ul {
+    list-style: none;
+}
+li {
+    display: inline-block;
+    margin: 0 15px;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+a:hover {
+    color: #9139d8;
+}
+
+/* page content */
+.bg-white {
+    background-color: rgb(254,219,177);
+    padding: 24px;
+}
+/* main content paragraph */
+.text-lg {
+    font-family: cursive;
+    font-size: 16px;
+    line-height: 1.5;
+}
+  
+/*MENU*/
+/* Common Styles for Menu Items */
+.category-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .menu-items {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
-}
-
-.menu-item {
-    background-color: #fff;
-    padding: 10px;
+  }
+  
+  .menu-item {
     border: 1px solid #ddd;
     border-radius: 5px;
-    text-align: center;
-}
-
-.menu-item img {
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 170px;
-    height: 180px;
-    margin-bottom: 10px;
-}
-
-.menu-item h3 {
-    font-size: 1.2em;
-    color: #333;
-}
-
-.menu-item p {
-    color: #666;
-}
-
-button {
-    background-color: #007bff;
+    text-align: center;
+  }
+  
+  .item-title {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .item-price {
+    color: #007BFF;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .add-to-cart-button {
+    background-color: #007BFF;
     color: #fff;
-    padding: 5px 10px;
     border: none;
     border-radius: 5px;
+    padding: 5px 10px;
     cursor: pointer;
-}
-
-button:hover {
+  }
+  
+  .add-to-cart-button:hover {
     background-color: #0056b3;
-}
+  }
+  
+  footer {
+    background-color: #f97f28;; 
+    color: #fff; 
+    text-align: center; 
+    padding: 10px 0; 
+    font-size: 14px; 
+  }
+  
 
+.login-form-container {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    top: 50%;
+    transform: translateY(50%);
+   
+  }
+  
+  /* Style the login form */
+  .login-form {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .login-form h1 {
+    font-size: 24px;
+    margin: 0 0 20px;
+  }
+  
+  /* Additional styles for form fields and buttons as needed */
+  .login-form fieldset {
+    margin: 10px 0;
+  }
+  
+  .login-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .login-form input[type="text"],
+  .login-form input[type="email"],
+  .login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .login-form input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Center the "Sign Up" link */
+  .login-form p {
+    margin: 20px 0;
+  }
+   
