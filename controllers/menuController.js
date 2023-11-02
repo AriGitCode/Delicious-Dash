@@ -1,26 +1,30 @@
-const MenuItem = require('../models/menuItemModel.js')
-// const { JWT_KEY_SECRET } = require('../config');
-// const jwt = require('jsonwebtoken');
-
-
-const mongoose = require('mongoose');
-mongoose.Promise = global.Promise
-
-//GET
-const getMenuItems = async(req, res) => {
-    try{
+const MenuItem = require('../models/menuItemModel');
+const getMenuItems = async (req, res) => {
+    try {
         const menuItems = await MenuItem.find();
-        const salads = menuItems.filter(item => item.category === 'Salads');
-        const pizzas = menuItems.filter(item => item.category === 'Pizzas');
-        res.render('menu.ejs', { menuItems,salads, pizzas });
-    } catch(err) {
-            res.status(500).send('Error fetching menu items')
-    };
+        
+        // Dynamically categorize all menu items
+        const categories = {};
+        menuItems.forEach(item => {
+            if (categories[item.category]) {
+                categories[item.category].push(item);
+            } else {
+                categories[item.category] = [item];
+            }
+        });
+
+        res.render('menu.ejs', { menuItems, categories });
+    } catch (error) {
+        console.error('Error fetching menu items:', error);
+        res.status(500).send('Error fetching menu items');
+    }
 };
 
 module.exports = {
     getMenuItems,
 };
+
+
 
 /*const getMenuItems = async (req, res) => {
     try {

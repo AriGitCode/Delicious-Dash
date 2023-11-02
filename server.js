@@ -19,7 +19,7 @@ app.use( express.static('public'))
 //Import Routers
 const userRouter = require('./routes/userRouter');
 const menuRouter = require ('./routes/menuRouter');//A.T 30.10
-const feedbackRouter = require ('./routes/feedbackRouter');
+//const feedbackRouter = require ('./routes/feedbackRouter');
 const checkauth = require('./middleware/checkauth.js');
 //const customerExpRouter = require('./routes/customerExpRouter.js')
 // app.set('views',path.join(__dirname, 'views'))
@@ -37,7 +37,7 @@ app.use(checkauth);
 //use routers
 app.use('/users', userRouter);
 app.use('/menu', menuRouter);
-app.use('/feedbacks', feedbackRouter);
+// app.use('/feedbacks', feedbackRouter);
 
 
 
