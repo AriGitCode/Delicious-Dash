@@ -1,0 +1,56 @@
+<%- include('./partials/header.ejs') %>
+
+<div class="main">
+    <div class="container">
+        <h1>A Personal Touch</h1>
+        <p>At Delicious Dash, your satisfaction drives our mission.</p>
+        <p>As our loyal customer, your preferences and special requests are our top priority.</p>
+        <p>Let us create a unique dining experience just for you. Share your thoughts and suggestions with us, guiding our continuous improvement.</p>
+        <p><strong>Bon Appétit!</strong></p>
+
+        <!-- Feedback form -->
+        <form id="feedbackForm" action="/feedbacks" method="POST">
+            <textarea name="feedback" placeholder="Leave your feedback here"></textarea>
+            <button type="submit">Submit Feedback</button>
+        </form>
+
+        <h2>Feedbacks:</h2>
+        <ul>
+            <% feedbacks.forEach(({id, feedback}) => { %>
+                <li>
+                    <p><%= feedback %></p>
+                
+                    <form action="/feedbacks/<%= id %>" method="POST">
+                        <button type="submit" class="delete-btn">Delete</button>
+                    </form>
+
+                    <button class="edit-button" data-index="<%= id %>">Edit</button>
+                    <form action="/feedbacks/<%= id %>/edit" method="POST" class="edit-form">
+                        <textarea name="updatedFeedback" ><%= feedback %></textarea>
+                        <button type="submit" class="edit-btn">Save</button>
+                    </form>
+                </li>
+            <% });%>
+           
+        </ul>
+
+       
+        <a class="btnLog" href="/home" role="button">Log Out</a>
+     
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

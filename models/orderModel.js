@@ -2,42 +2,33 @@ const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema(
     {
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: false,
-        ref: "User",
-      },
-      menuItems: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
+        orderId: {
+            type: String,
             required: true,
-            ref: "MenuItem",
-        
         },
-      ],
-      shippingAddress: {
-        address: { type: String, required: true },
-      },
-      paymentMethod: {
-        type: String,
-        required: true,
-      },
-      paymentResult: {
-        id: { type: String },
-        status: { type: String },
-        update_time: { type: String },
-        email_address: { type: String },
-      },
-     
-      totalPrice: {
-        type: Number,
-        required: true,
-        default: 0.0,
-      },
+        items: [
+            {
+                type: Array,
+                required: true,
+            },
+        ],
+        address: {
+            type: String,
+            required: true,
+        },
+        totalAmount: {
+            type: Number,
+            required: true,
+        },
+        paidThrough: {
+            type: String,
+        }
     },
     {
-      timestamps: true,
+        timestamps: true // Corrected placement of timestamps option
     }
-  );
-  
-  module.exports = mongoose.model("Order", orderSchema);
+);
+
+const Order = mongoose.model("Order", orderSchema, "orders");
+
+module.exports = Order; 
