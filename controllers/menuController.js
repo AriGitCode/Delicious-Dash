@@ -1,6 +1,13 @@
 const MenuItem = require('../models/menuItemModel');
+const User = require('../models/userModel');
 const getMenuItems = async (req, res) => {
     try {
+     let renderFileName = "menu.ejs"
+      const user = await User.findById(req.userId);
+      if(user.role === "admin" ){
+        renderFileName = "admin-menu.ejs"
+      }
+      console.log("user", user);
         const menuItems = await MenuItem.find();
         
         // Dynamically categorize all menu items
@@ -12,8 +19,8 @@ const getMenuItems = async (req, res) => {
                 categories[item.category] = [item];
             }
         });
-
-        res.render('menu.ejs', { menuItems, categories });
+        
+        res.render(renderFileName, { menuItems, categories});
     } catch (error) {
         console.error('Error fetching menu items:', error);
         res.status(500).send('Error fetching menu items');

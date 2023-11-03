@@ -19,8 +19,10 @@ app.use( express.static('public'))
 //Import Routers
 const userRouter = require('./routes/userRouter');
 const menuRouter = require ('./routes/menuRouter');
+const adminRouter = require ('./routes/adminMenuRouter');
 //const feedbackRouter = require ('./routes/feedbackRouter'); //2 nov
-const isAdmin = require('./middleware/checkauth.js');// 3 nov changed from checkauth to isAdmin
+//const isAdmin = require('./middleware/adminauth.js');// 3 nov changed from checkauth to isAdmin
+const checkauth = require("./middleware/checkauth.js");
 // app.set('views',path.join(__dirname, 'views'))
  app.set('view engine', 'ejs');
 
@@ -30,12 +32,14 @@ app.use(bodyParser.json({ limit: "200mb" })); //looks at any requests that comes
 app.use(express.urlencoded({ limit: "200mb", extended: false }));// added A.T.
 //app.use(methodOverride("_method"));// added A.T.
 app.use(cookieParser());
-app.use(isAdmin); // 3 nov changed from checkauth to isAdmin
-
+//app.use(isAdmin); // 3 nov changed from checkauth to isAdmin
+app.use(checkauth);
 
 //use routers
 app.use('/users', userRouter);
 app.use('/menu', menuRouter);
+app.use('/admin/menu',adminRouter);
+
 // app.use('/feedbacks', feedbackRouter);
 
 

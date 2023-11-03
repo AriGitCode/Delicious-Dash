@@ -19,7 +19,6 @@ const { JWT_KEY_SECRET } = require('../config') //JWT is a secret word that only
 const User = require('../models/userModel');
 
 
-
 //NEW
 const sendNewUserForm = (req, res, next) => {
 
@@ -86,7 +85,7 @@ const createNewUser = async (req, res, next) => {
   
       const token = jwt.sign({ userId: user.id, email: user.email }, JWT_KEY_SECRET);
   
-      return res.cookie('access_token', token).redirect('/feedbacks');
+      return res.cookie('access_token', token).redirect('/menu'); //feedbacks changedvto menu
     } catch (error) {
       console.error('Login error:', error);
       return res.status(500).send('An error occurred during login');

@@ -7,6 +7,8 @@ const userSchema = mongoose.Schema({
       password: { type: String, required: true, minlength: 6 },
       orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
       feedbacks: { type: Array }, 
+      role: {type: String, required: true, default: "user"},
+      
     },
 
     {timestamps: true,}
