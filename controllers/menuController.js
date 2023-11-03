@@ -20,9 +20,48 @@ const getMenuItems = async (req, res) => {
     }
 };
 
+const createMenuItem = async (req, res) => {
+    try {
+        const { name, description, price, category } = req.body;
+        const newItem = new MenuItem({ name, description, price, category });
+        await newItem.save();
+        res.redirect('/menu'); // Redirect to the menu page or any other appropriate page
+    } catch (error) {
+        console.error('Error creating menu item:', error);
+        res.status(500).send('Error creating menu item');
+    }
+};
+
+const updateMenuItem = async (req, res) => {
+    const { id } = req.params; // Get the menu item ID from the URL
+    try {
+        const updatedData = req.body; // Data to update
+        await MenuItem.findByIdAndUpdate(id, updatedData);
+        res.redirect('/menu'); // Redirect to the menu page or any other appropriate page
+    } catch (error) {
+        console.error('Error updating menu item:', error);
+        res.status(500).send('Error updating menu item');
+    }
+};
+
+const deleteMenuItem = async (req, res) => {
+    const { id } = req.params; // Get the menu item ID from the URL
+    try {
+        await MenuItem.findByIdAndRemove(id);
+        res.redirect('/menu'); // Redirect to the menu page or any other appropriate page
+    } catch (error) {
+        console.error('Error deleting menu item:', error);
+        res.status(500).send('Error deleting menu item');
+    }
+};
+
 module.exports = {
     getMenuItems,
+    createMenuItem,
+    updateMenuItem,
+    deleteMenuItem, 
 };
+
 
 
 

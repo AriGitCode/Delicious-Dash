@@ -18,10 +18,9 @@ app.use( express.static('public'))
 
 //Import Routers
 const userRouter = require('./routes/userRouter');
-const menuRouter = require ('./routes/menuRouter');//A.T 30.10
-//const feedbackRouter = require ('./routes/feedbackRouter');
-const checkauth = require('./middleware/checkauth.js');
-//const customerExpRouter = require('./routes/customerExpRouter.js')
+const menuRouter = require ('./routes/menuRouter');
+//const feedbackRouter = require ('./routes/feedbackRouter'); //2 nov
+const isAdmin = require('./middleware/checkauth.js');// 3 nov changed from checkauth to isAdmin
 // app.set('views',path.join(__dirname, 'views'))
  app.set('view engine', 'ejs');
 
@@ -30,8 +29,8 @@ const checkauth = require('./middleware/checkauth.js');
 app.use(bodyParser.json({ limit: "200mb" })); //looks at any requests that comes in that has json in it and parses it into a JS object that you can access the keys and use like a regular object so that my app can manipulate it.
 app.use(express.urlencoded({ limit: "200mb", extended: false }));// added A.T.
 //app.use(methodOverride("_method"));// added A.T.
-app.use(cookieParser());// A.T. 
-app.use(checkauth);
+app.use(cookieParser());
+app.use(isAdmin); // 3 nov changed from checkauth to isAdmin
 
 
 //use routers
