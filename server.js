@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const ejs = require('ejs');
 
 const app = express();
-const PORT = 4000;
+const PORT = 3000;
 
 
 require('./db/connection.js');
@@ -22,15 +22,16 @@ const checkauth = require("./middleware/checkauth.js");
 // setting up the MW and Define a route
 app.use(express.static("public")); 
 app.use(bodyParser.json({ limit: "200mb" })); 
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(checkauth);
+
 
 //use routers
 app.use('/users', userRouter);
 app.use('/menu', menuRouter);
 app.use('/admin/menu',adminRouter);
 // app.use('/feedbacks', feedbackRouter);
-
+app.use(checkauth);
 
 
 app.use('/home',(req, res)=>{

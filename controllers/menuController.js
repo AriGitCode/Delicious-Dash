@@ -1,10 +1,14 @@
 const MenuItem = require('../models/menuItemModel');
-
+const {jwtDecode}= require('jwt-decode');
+const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const getMenuItems = async (req, res) => {
     try {
+        const decodeToken = jwtDecode(req.cookies.access_token)
+        console.log(req.cookies);
+        console.log(decodeToken);
      let renderFileName = "menu.ejs"
-      const user = await User.findById(req.userId);
+      const user = await User.findById(decodeToken.userId);
       if(user.role === "admin" ){
         renderFileName = "admin-menu.ejs"
       }

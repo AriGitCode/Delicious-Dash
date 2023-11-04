@@ -30,7 +30,7 @@ const sendLoginForm = (req, res, next) => {
 const createNewUser = async (req, res, next) => {
     try {
       const { firstName, lastName, email, password } = req.body;
-  
+      console.log(req.body);
       const userExists = await User.findOne({ email });
       if (userExists) {
         return res.status(400).send('Email already exists');
