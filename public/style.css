@@ -61,7 +61,7 @@ body {
     padding: 10px 0;
     text-align: center;
     position: relative;
-    z-index: 1; /* Ensure the navigation bar is above other elements */
+    z-index: 1; 
 }
 
 .logo {

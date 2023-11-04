@@ -1,12 +1,4 @@
-//!!! npm i  bcrypt  bcryptjs  cookie-parser  jsonwebtoken
-// const express = require('express');
-// const router = express.Router();// A.T. do we need this????
-
-
 const mongoose = require('mongoose');
-
-//const methodOverride = require('method-override');//for HTTP method overriding
-//const cookieParser = require('cookie-parser');//for handling cookies //A.T. do we need this????
 
 //authentication related libraries
 const bcrypt = require('bcrypt');
@@ -17,7 +9,6 @@ mongoose.Promise = global.Promise
 
 const { JWT_KEY_SECRET } = require('../config') //JWT is a secret word that only exists on server, Nobody allowed to know otherwise they can replicate JWT
 const User = require('../models/userModel');
-
 
 
 //NEW
@@ -39,7 +30,7 @@ const sendLoginForm = (req, res, next) => {
 const createNewUser = async (req, res, next) => {
     try {
       const { firstName, lastName, email, password } = req.body;
-  
+      console.log(req.body);
       const userExists = await User.findOne({ email });
       if (userExists) {
         return res.status(400).send('Email already exists');
@@ -86,7 +77,7 @@ const createNewUser = async (req, res, next) => {
   
       const token = jwt.sign({ userId: user.id, email: user.email }, JWT_KEY_SECRET);
   
-      return res.cookie('access_token', token).redirect('/feedbacks');
+      return res.cookie('access_token', token).redirect('/menu'); //feedbacks changedvto menu
     } catch (error) {
       console.error('Login error:', error);
       return res.status(500).send('An error occurred during login');
@@ -100,8 +91,7 @@ sendLoginForm,
 login, 
 //logout
 }
-  //Once the user is authenticated and their session gets saved, their user details are saved to req.user.
-    // console.log(req.user.id);
+
   
   
 // //LOGOUT

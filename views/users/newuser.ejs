@@ -1,10 +1,30 @@
 
 <%- include('../partials/header.ejs') %>
-
+<head>
+    <style>
+       * {
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+        h1{
+            color: azure;
+            text-align:center;
+        }
+        .signup {
+            width: 300px;
+            text-align: center;
+            padding: 70px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
 <div class="bg-image"></div>
 <h1>Sign Up</h1>
 
-<form class="signup" method="POST" action="/users/signup"> //it's createNewUser which is linked userRoutes
+<form class="signup" method="POST" action="/users/signup"> 
     <fieldset>
         <label for="firstName">First Name: </label>
         <input id="firstName" type="text" name="firstName">
@@ -28,4 +48,3 @@
 
 </form>
 
-<%- include('../partials/footer.ejs') %>
