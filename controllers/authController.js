@@ -1,12 +1,4 @@
-//!!! npm i  bcrypt  bcryptjs  cookie-parser  jsonwebtoken
-// const express = require('express');
-// const router = express.Router();// A.T. do we need this????
-
-
 const mongoose = require('mongoose');
-
-//const methodOverride = require('method-override');//for HTTP method overriding
-//const cookieParser = require('cookie-parser');//for handling cookies //A.T. do we need this????
 
 //authentication related libraries
 const bcrypt = require('bcrypt');
@@ -99,8 +91,7 @@ sendLoginForm,
 login, 
 //logout
 }
-  //Once the user is authenticated and their session gets saved, their user details are saved to req.user.
-    // console.log(req.user.id);
+
   
   
 // //LOGOUT

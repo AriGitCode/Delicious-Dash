@@ -1,11 +1,16 @@
 <%- include('./partials/header.ejs') %>
+<head>
+    <style>
+       body {
+            background-color: #FEDBB1; 
+        }
+    </style>
+</head>
 
-
-    <!-- Form for creating a new menu item -->
     <form action="/admin/menu" method="POST">
         <input type="text" name="name" placeholder="Item Name" required>
         <input type="text" name="description" placeholder="Item Description" required>
-        <input type="number" name="price" placeholder="Item Price" required>
+        <input type="text" name="price" placeholder="Item Price" required>
         <input type="text" name="category" placeholder="Item Category" required>
         <input type="submit" value="Create Menu Item">
     </form>
@@ -20,15 +25,16 @@
                     <!-- Display item details -->
                     <h3><%= item.name %></h3>
                     <p>Price: $<%= item.price %></p>
-                    
+                    <img src="<%= item.imageSrc %>" alt="<%= item.name %> Image">
                    
                         <!-- Form for updating the item -->
                         <form action="/admin/menu/<%= item._id %>" method="POST">
                             <input type="text" name="name" placeholder="New Item Name">
                             <input type="text" name="description" placeholder="New Item Description">
-                            <input type="number" name="price" placeholder="New Item Price">
+                            <input type="text" name="price" placeholder="New Item Price">
                             <input type="text" name="category" placeholder="New Item Category">
                             <input type="submit" value="Update">
+                            <input type="submit" value="Remove">
                         </form>
                  
                 </div>

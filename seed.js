@@ -1,17 +1,7 @@
-// const db = require('./db/connection');
 
-// const mongoose = require('mongoose');
 const MenuItem = require('./models/menuItemModel'); 
 
-// Connect to your MongoDB database
-// mongoose.connect('mongodb://localhost/foodAppDB', { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => {
-//     console.log('Connected to the database');
-//     seedData(); 
-//   })
-//   .catch((error) => {
-//     console.error('Error connecting to the database:', error);
-//   });
+
 
 const foodItems = [
   {
@@ -26,12 +16,12 @@ const foodItems = [
     price: 11.99,
     category: "Burgers",
   },
-{
+  {
             name: "Chicken Caesar Salad",
             description: "Grilled chicken breast atop fresh romaine lettuce, with parmesan cheese and croutons.",
             price: 14.99,
             category: "Salads"
-        },
+    },
         {
             name: "Garden Salad",
             description: "A medley of fresh vegetables served on a bed of crisp lettuce.",
@@ -55,12 +45,6 @@ const foodItems = [
             description: "A classic Italian dish with creamy sauce, pancetta, and parmesan cheese.",
             price: 16.99,
             category: "Pasta"
-        },
-        {
-            name: "Vegetable Stir Fry",
-            description: "Fresh vegetables sautéed in a savory sauce, served over steamed rice.",
-            price: 14.99,
-            category: "Vegetarian"
         },
         {
             name: "Chicken Alfredo",
@@ -121,41 +105,10 @@ const foodItems = [
       }
     };
     
-    // Call the seed function
+   
     seedData();
    
     
-    
-    
-    
-    
-    
 
-// async function populateDatabase() {
-//     try {
-//         await db.connect();
-//         const menuItems = [
-//             {
-//                 name: 'Burger',
-//                 description: 'Delicious burger with all the fixings',
-//                 price: 10.99,
-//                 category: 'Main Course',
-//             },
-//             {
-//                 name: 'Caesar Salad',
-//                 description: 'Fresh salad with Caesar dressing',
-//                 price: 7.99,
-//                 category: 'Appetizer',
-//             },
-//             // Add more menu items here
-//         ];
-//         await MenuItem.insertMany(menuItems);
-//         console.log('Menu items inserted into the database');
-//     } catch (error) {
-//         console.error('Error populating the database:', error);
-//     } finally {
-//         db.close();
-//     }
-// }
-// populateDatabase();
+
 

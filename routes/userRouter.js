@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-//const {User} = require('../models/userModel')//A.T. it is in authController
 
 const {    //A.T importing code for fetching user
     sendNewUserForm,
@@ -32,8 +31,6 @@ router.post("/login", login);
 
 //router.get('/customer-experience', userRouter)
 
-
- 
 //LOGOUT
 //router.get("/logout", logout);
 

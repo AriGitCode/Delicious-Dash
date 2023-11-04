@@ -1,5 +1,28 @@
 
 <%- include('./partials/header.ejs') %>
+<head>
+    <style>
+       body{
+            background-image: url("/images/salad.png"); 
+            text-align: center;
+            color: #9fe429; 
+        }
+        .menu-item {
+            background-color: #F2FBF4;
+            text-align: center;
+            padding: 10px;
+            margin: 10px;
+        }
+       
+        .btn{
+            background-color: rgb(231, 218, 32); 
+            padding: 5px 10px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body> 
+    <h1>Popular items</h1>
 
 <% Object.keys(categories).forEach(category => { %>
     <div class="menu-category">
@@ -7,10 +30,10 @@
         <div class="menu-items">
             <% categories[category].forEach(item => { %>
                 <div class="menu-item">
-                    <!-- Display item details -->
+                    <img src="/images/<%= item.images %>" alt="<%= item.name %> Image"> 
                     <h3><%= item.name %></h3>
                     <p>Price: $<%= item.price %></p>
-                    
+                    <button class="btn">Add to Cart</button> 
                 </div>
             <% }); %>
         </div>

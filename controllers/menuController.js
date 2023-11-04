@@ -1,4 +1,5 @@
 const MenuItem = require('../models/menuItemModel');
+
 const User = require('../models/userModel');
 const getMenuItems = async (req, res) => {
     try {
@@ -10,7 +11,7 @@ const getMenuItems = async (req, res) => {
       console.log("user", user);
         const menuItems = await MenuItem.find();
         
-        // Dynamically categorize all menu items
+       
         const categories = {};
         menuItems.forEach(item => {
             if (categories[item.category]) {
@@ -32,7 +33,7 @@ const createMenuItem = async (req, res) => {
         const { name, description, price, category } = req.body;
         const newItem = new MenuItem({ name, description, price, category });
         await newItem.save();
-        res.redirect('/menu'); // Redirect to the menu page or any other appropriate page
+        res.redirect('/menu'); 
     } catch (error) {
         console.error('Error creating menu item:', error);
         res.status(500).send('Error creating menu item');
@@ -40,11 +41,11 @@ const createMenuItem = async (req, res) => {
 };
 
 const updateMenuItem = async (req, res) => {
-    const { id } = req.params; // Get the menu item ID from the URL
+    const { id } = req.params; 
     try {
-        const updatedData = req.body; // Data to update
+        const updatedData = req.body;
         await MenuItem.findByIdAndUpdate(id, updatedData);
-        res.redirect('/menu'); // Redirect to the menu page or any other appropriate page
+        res.redirect('/menu'); 
     } catch (error) {
         console.error('Error updating menu item:', error);
         res.status(500).send('Error updating menu item');
@@ -52,10 +53,10 @@ const updateMenuItem = async (req, res) => {
 };
 
 const deleteMenuItem = async (req, res) => {
-    const { id } = req.params; // Get the menu item ID from the URL
+    const { id } = req.params; 
     try {
         await MenuItem.findByIdAndRemove(id);
-        res.redirect('/menu'); // Redirect to the menu page or any other appropriate page
+        res.redirect('/menu'); 
     } catch (error) {
         console.error('Error deleting menu item:', error);
         res.status(500).send('Error deleting menu item');
@@ -71,24 +72,3 @@ module.exports = {
 
 
 
-
-/*const getMenuItems = async (req, res) => {
-    try {
-        // Initialize empty arrays for salads and pizzas
-        const salads = [];
-        const pizzas = [];
-
-        // Use Array.forEach to categorize food items
-        foodItems.forEach((item) => {
-            if (item.category === 'Salads') {
-                salads.push(item);
-            } else if (item.category === 'Pizzas') {
-                pizzas.push(item);
-            }
-        });
-
-        res.render('menu.ejs', { salads, pizzas });
-    } catch (err) {
-        res.status(500).send('Error filtering menu items');
-    }
-};*/
