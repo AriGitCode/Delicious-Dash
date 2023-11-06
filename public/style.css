@@ -6,6 +6,8 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    color: antiquewhite;
+    background-color: #FF8B23;
 }
 .bg-image {
     background-image: url('/images/specialfood30.png'); 
@@ -30,29 +32,27 @@ body {
 }
 
 .about-text {
-    width: 50%; /* Adjust the width as needed */
-    padding: 20px;
+    width: 50%; 
+    padding: 30px;
+    line-height: 1.5;
+    font-weight:500;
+    color: rgb(42, 74, 42);
 }
 
 .about-image {
-    width: 50%; /* Adjust the width as needed */
+    width: 50%; 
 }
 
 /* Responsive layout for smaller screens */
 @media (max-width: 768px) {
     .about-section {
         flex-direction: column;
-    }
+  }
 
     .about-text,
     .about-image {
         width: 100%;
     }
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
   /* Navigation bar styles */
@@ -90,16 +90,10 @@ a:hover {
     color: #9139d8;
 }
 
-/* page content */
+/* page content :rgb(254,219,177) */
 .bg-white {
-    background-color: rgb(254,219,177);
+    background-color: #FF8B23;
     padding: 24px;
-}
-/* main content paragraph */
-.text-lg {
-    font-family: cursive;
-    font-size: 16px;
-    line-height: 1.5;
 }
   
 /*MENU*/
@@ -125,35 +119,12 @@ a:hover {
     text-align: center;
   }
   
-  .item-title {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
-  .item-price {
-    color: #007BFF;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  
-  .add-to-cart-button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .add-to-cart-button:hover {
-    background-color: #0056b3;
-  }
   
   footer {
-    background-color: #f97f28;; 
+    background-color: #FF8B23; 
     color: #fff; 
     text-align: center; 
-    padding: 10px 0; 
+    padding: 20px ; 
     font-size: 14px; 
   }
   

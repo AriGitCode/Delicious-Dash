@@ -2,6 +2,7 @@ const MenuItem = require('../models/menuItemModel');
 const {jwtDecode}= require('jwt-decode');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
+
 const getMenuItems = async (req, res) => {
     try {
         const decodeToken = jwtDecode(req.cookies.access_token)
